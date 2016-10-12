@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="userMapper">
+	<select id="selectUserList" parameterType="hashmap" resultType="hashmap">
+	<![CDATA[
+		SELECT *
+		  FROM user 
+	]]>
+	</select>
+	
+	<select id="selectUser" parameterType="hashmap" resultType="hashmap">
+	<![CDATA[
+		SELECT *
+		  FROM user
+		 WHERE user_id = #{user_id}
+	]]>
+	</select>
+	
+	<insert id="insertUser" parameterType="hashmap" useGeneratedKeys="true" keyProperty="user_id">
+	<![CDATA[
+		INSERT INTO user
+		(
+			  social_id
+			, social_type
+			, nickname
+			, birth_date
+			, profile_img
+			, info
+			, region1
+			, region2
+			, region3
+		)
+		VALUES
+		(
+			  #{social_id}
+			, #{social_type}
+			, #{nickname}
+			, #{birth_date}
+			, #{profile_img}
+			, #{info}	
+			, #{region1}
+			, #{region2}
+			, #{region3}
+		)
+	]]>
+	</insert>
+	
+	<update id="updateUser" parameterType="hashmap" useGeneratedKeys="true" keyProperty="user_id">
+	<![CDATA[
+		UPDATE user
+	]]>
+	   <set>
+	      <if test="nickname != null">nickname=#{nickname},</if>
+	      <if test="info != null">info=#{info},</if>
+	      <if test="birth_date != null">birth_date=#{birth_date},</if>
+	      <if test="phone_num != null">phone_num=#{phone_num},is_phone_auth='Y',</if>
+	      <if test="region1 != null">region1=#{region1},</if>
+	      <if test="region2 != null">region1=#{region2},</if>
+	      <if test="region3 != null">region1=#{region3},</if>
+	    </set>
+	<![CDATA[
+		 WHERE user_id = #{user_id}
+	]]>
+	</update>
+	
+	<select id="selectNickname" parameterType="hashmap" resultType="hashmap">
+	<![CDATA[
+		SELECT *
+		  FROM user
+		 WHERE nickname = #{nickname}
+	]]>
+	</select>
+	
+</mapper>

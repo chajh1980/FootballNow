@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="userMatchMapper">
+	<select id="selectUserMatch" parameterType="hashmap" resultType="hashmap">
+	<![CDATA[
+		SELECT *
+		  FROM user_match
+		 WHERE match_id = #{match_id}
+	]]>
+	</select>
+	
+	<insert id="insertUserMatch" parameterType="hashmap" useGeneratedKeys="true" keyProperty="match_id">
+	<![CDATA[
+		INSERT INTO user_match
+		(
+			 user_id
+			, match_day
+			, match_month
+			, match_year
+			, match_hour
+			, match_minute
+			, main_team_id
+			, main_team_name
+			, main_team_logo
+			, title
+			, min_manner_point
+			, game_type
+			, play_type
+			, meet_addr
+			, meet_addr_name
+			, area_cd
+			, geo_x
+			, geo_y
+			, level
+		)
+		VALUES
+		(       
+			  #{user_id}       
+			, #{match_day}       
+			, #{match_month}     
+			, #{match_year}    
+			, #{match_hour}
+			, #{match_minute}
+			, #{main_team_id}
+			, #{main_team_name}
+			, #{main_team_logo}
+			, #{title}
+			, #{min_manner_point}
+			, #{game_type}
+			, #{play_type}
+			, #{meet_addr}
+			, #{meet_addr_name}
+			, #{area_cd}
+			, #{geo_x}
+			, #{geo_y}
+			, #{level}
+		)
+	]]>
+	</insert>
+	
+	<update id="updateUser" parameterType="hashmap" useGeneratedKeys="true" keyProperty="user_id">
+	<![CDATA[
+		UPDATE user
+	]]>
+	   <set>
+	      <if test="nickname != null">nickname=#{nickname},</if>
+	      <if test="info != null">info=#{info},</if>
+	      <if test="birth_date != null">birth_date=#{birth_date},</if>
+	      <if test="phone_num != null">phone_num=#{phone_num},is_phone_auth='Y',</if>
+	      <if test="region1 != null">region1=#{region1},</if>
+	      <if test="region2 != null">region1=#{region2},</if>
+	      <if test="region3 != null">region1=#{region3},</if>
+	    </set>
+	<![CDATA[
+		 WHERE user_id = #{user_id}
+	]]>
+	</update>
+	
+	<select id="selectNickname" parameterType="hashmap" resultType="hashmap">
+	<![CDATA[
+		SELECT *
+		  FROM user
+		 WHERE nickname = #{nickname}
+	]]>
+	</select>
+	
+</mapper>
