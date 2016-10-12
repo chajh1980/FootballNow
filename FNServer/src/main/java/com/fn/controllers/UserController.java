@@ -49,4 +49,6 @@ public class UserController {
 	public boolean nicknameDuplCheck(Model model, @RequestParam Map<String,Object> map){
 		return userService.selectNickname(map).size() > 0 ? true : false; 
 	}
+	
+	//test
 }
