@@ -50,5 +50,5 @@ public class UserController {
 		return userService.selectNickname(map).size() > 0 ? true : false; 
 	}
 	
-	//test
+	//test22
 }
