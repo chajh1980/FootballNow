@@ -9,12 +9,16 @@ import org.springframework.stereotype.Service;
 import com.fn.mapper.UserMatchMapper;
 
 @Service
-public class UserMathService {
+public class UserMatchService {
 	@Autowired
 	UserMatchMapper userMatchMapper;
 	
 	public List<Map<String,Object>> selectUserMatch(Map<String,Object> map){ 
 		return userMatchMapper.selectUserMatch(map);
+	}
+	
+	public List<Map<String,Object>> selectMatchSearch(){ 
+		return userMatchMapper.selectMatchSearch();
 	}
 	
 	public void insertUserMatch(Map<String,Object> map){

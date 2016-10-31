@@ -13,6 +13,10 @@ public class UserMatchMapper extends AbstractDAO {
 	public void insertUserMatch(Map<String, Object> map) {
 		insert("userMatchMapper.insertUserMatch", map);
 	}
+	
+	public List<Map<String, Object>> selectMatchSearch() {
+		return (List<Map<String,Object>>)selectList("userMatchMapper.selectMatchSearch");
+	}
 
 	public List<Map<String, Object>> selectUserMatch(Map<String, Object> map) {
 		return (List<Map<String,Object>>)selectList("userMatchMapper.selectUserMatch",map);

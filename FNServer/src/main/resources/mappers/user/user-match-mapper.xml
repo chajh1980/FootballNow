@@ -84,4 +84,12 @@
 	]]>
 	</select>
 	
+	<select id="selectMatchSearch" parameterType="hashmap" resultType="hashmap">
+	<![CDATA[
+		SELECT *
+		  FROM match_info
+	]]>
+	</select>
+	
+	
 </mapper>
